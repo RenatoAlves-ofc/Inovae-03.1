@@ -1,11 +1,7 @@
-import './App.css'
+import BarraDeNavegacaoAyanokoji from "./components/Navbar";
 
 function App() {
-  return (
-    <>
-      
-    </>
-  )
+  return <BarraDeNavegacaoAyanokoji />;
 }
 
-export default App
+export default App;
