@@ -8,10 +8,27 @@
   margin-bottom: var(--space-xl);
 }
 
+/* Grade de 6 colunas — permite linhas com 3, 2 e 1 imagem usando spans. */
 .gallery__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: clamp(var(--space-md), 3vw, var(--space-xl));
+}
+
+/* Linha 1 — 3 imagens lado a lado (cada uma ocupa 2 de 6 colunas). */
+.gallery__card:nth-child(-n + 3) {
+  grid-column: span 2;
+}
+
+/* Linha 2 — 2 imagens lado a lado (cada uma ocupa 3 de 6 colunas). */
+.gallery__card:nth-child(4),
+.gallery__card:nth-child(5) {
+  grid-column: span 3;
+}
+
+/* Linha 3 — 1 imagem em largura total (Ayanokoji vs Hōsen). */
+.gallery__card:nth-child(6) {
+  grid-column: 1 / -1;
 }
 
 .gallery__card {
@@ -32,6 +49,17 @@
   object-fit: cover;
   background: var(--surface);
   border: 1px solid var(--hairline);
+}
+
+/* Linha 2: cards mais largos → proporção paisagem para equilibrar a altura. */
+.gallery__card:nth-child(4) .gallery__card-media,
+.gallery__card:nth-child(5) .gallery__card-media {
+  aspect-ratio: 3 / 2;
+}
+
+/* Linha 3: imagem-banner em largura total. */
+.gallery__card:nth-child(6) .gallery__card-media {
+  aspect-ratio: 16 / 9;
 }
 
 /* Placeholder onde a imagem será colocada depois. */
@@ -63,14 +91,33 @@
   padding: var(--space-2xs) var(--space-xs);
 }
 
+/* Tablet: 2 por linha; o banner final segue em largura total. */
 @media (max-width: 860px) {
   .gallery__grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .gallery__card:nth-child(-n + 5) {
+    grid-column: span 1;
+  }
+
+  .gallery__card:nth-child(6) {
+    grid-column: 1 / -1;
+  }
+
+  .gallery__card:nth-child(4) .gallery__card-media,
+  .gallery__card:nth-child(5) .gallery__card-media {
+    aspect-ratio: 4 / 5;
+  }
 }
 
+/* Celular: tudo empilhado em 1 coluna. */
 @media (max-width: 520px) {
   .gallery__grid {
     grid-template-columns: 1fr;
+  }
+
+  .gallery__card:nth-child(6) .gallery__card-media {
+    aspect-ratio: 4 / 5;
   }
 }

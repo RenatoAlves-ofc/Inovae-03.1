@@ -3,12 +3,6 @@ import Eyebrow from "../../ui/Eyebrow/Eyebrow";
 import SealMark from "../../ui/SealMark/SealMark";
 import { bastidoresQuote, heroVideo, imgDigital } from "../../../data/content";
 
-// Respeita prefers-reduced-motion: sem reprodução automática do avatar animado.
-const prefereMenosMovimento =
-  typeof window !== "undefined" &&
-  typeof window.matchMedia === "function" &&
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
 function SocialFeed() {
   return (
     <section className="feed" id="bastidores">
@@ -21,7 +15,7 @@ function SocialFeed() {
           className="feed__avatar"
           src={heroVideo}
           poster={imgDigital}
-          autoPlay={!prefereMenosMovimento}
+          autoPlay
           muted
           loop
           playsInline
