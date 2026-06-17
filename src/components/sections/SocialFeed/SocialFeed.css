@@ -1,0 +1,131 @@
+.feed {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: var(--section-py) var(--gutter);
+}
+
+.feed__intro {
+  margin-bottom: var(--space-lg);
+}
+
+.feed__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.feed__avatar {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.feed__identity {
+  min-width: 0;
+}
+
+.feed__handle {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.feed__bio {
+  font-size: var(--fs-meta);
+  color: var(--muted);
+}
+
+.feed__follow {
+  margin-left: auto;
+  min-height: 44px;
+  padding: var(--space-2xs) var(--space-md);
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.feed__follow:hover {
+  background: transparent;
+  color: var(--ink);
+}
+
+/* Card único de citação (substitui a antiga grade do feed). */
+.feed__quote-card {
+  position: relative;
+  margin: 0 auto;
+  /* reduzir padding máximo e usar valores mais moderados para telas grandes */
+  padding: clamp(var(--space-md), 4vw, var(--space-lg));
+  background: var(--ink);
+  color: var(--on-dark);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Aspas japonesas decorativas (「) em vermelhão. */
+.feed__quote-card::before {
+  content: "\300C";
+  position: absolute;
+  top: clamp(-0.25rem, 0.8vw, 0.25rem);
+  left: clamp(0.5rem, 2.5vw, 1.5rem);
+  font-family: var(--font-display);
+  /* diminui o tamanho das aspas decorativas para evitar sobreposição excessiva */
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  line-height: 1;
+  color: var(--seal);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.feed__quote-text {
+  position: relative;
+  /* permitir linhas mais largas para reduzir quebras e altura excessiva */
+  max-width: 60ch;
+  font-family: var(--font-display);
+  /* diminuir o tamanho máximo e tornar o dimensionamento mais suave */
+  font-size: clamp(1.125rem, 1.8vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.6;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.feed__quote-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.feed__quote-author cite {
+  font-style: normal;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  color: rgba(247, 245, 241, 0.75);
+}
+
+@media (max-width: 640px) {
+  .feed__header {
+    flex-wrap: wrap;
+  }
+
+  .feed__follow {
+    margin-left: 0;
+  }
+}

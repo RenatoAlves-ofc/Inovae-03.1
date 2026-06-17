@@ -1,0 +1,106 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--gutter);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* Reset dos botões usados como itens visuais; cursor: default reforça
+   que a navbar não é interativa. */
+.navbar button {
+  margin: 0;
+  border: none;
+  background: none;
+  color: var(--ink);
+  font-family: inherit;
+  cursor: default;
+}
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2xs);
+  white-space: nowrap;
+  padding: var(--space-3xs) 0;
+}
+
+.navbar__brand-en {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.navbar__brand-jp {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--seal);
+}
+
+.navbar nav {
+  flex: 1;
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(var(--space-sm), 2.5vw, var(--space-lg));
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar__link {
+  min-height: 44px;
+  padding: var(--space-2xs) 0;
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.25s ease;
+}
+
+.navbar__link:hover {
+  color: var(--ink);
+}
+
+.navbar__inquire {
+  min-height: 44px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.navbar__inquire:hover {
+  color: var(--ink);
+}
+
+@media (max-width: 860px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding-inline: var(--space-md);
+  }
+
+  .navbar nav {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .navbar__menu {
+    gap: var(--space-sm);
+  }
+}

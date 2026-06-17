@@ -1,0 +1,39 @@
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent-soft);
+}
+
+.eyebrow__kanji {
+  font-family: var(--font-display);
+  font-size: 1.2em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: var(--seal);
+}
+
+/* Separador "—" só aparece quando há kanji antes do rótulo. */
+.eyebrow__kanji + .eyebrow__label::before {
+  content: "—";
+  margin-right: var(--space-2xs);
+  color: var(--hairline-strong);
+}
+
+.eyebrow--light {
+  color: rgba(247, 245, 241, 0.78);
+}
+
+.eyebrow--light .eyebrow__kanji {
+  color: var(--seal-soft);
+}
+
+.eyebrow--light .eyebrow__kanji + .eyebrow__label::before {
+  color: rgba(247, 245, 241, 0.4);
+}
